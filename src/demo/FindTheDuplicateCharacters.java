@@ -1,31 +1,20 @@
-package demo;
+import java.util.*;
 
-import java.util.HashMap;
-import java.util.Map;
+class Main {
+    public static void main(String[] args) {
 
-public class FindTheDuplicateCharacters {
+        String name = "SeleniumProgram".toLowerCase();
+        Map<Character, Integer> frequency = new LinkedHashMap<>();
 
-	public static void main(String[] args) {
+        for (char ch : name.toCharArray()) {
+            frequency.put(ch, frequency.getOrDefault(ch, 0) + 1);
+        }
 
-		
-		String name="PravinKumarJha";
-		name=name.toLowerCase().replaceAll("\\s","");
-		
-		
-		Map<Character,Integer> fre=new HashMap<>();
-		
-		for(char c:name.toCharArray()) {
-			
-			fre.put(c, fre.getOrDefault(c, 0)+1);
-		}
-		
-		for(Map.Entry<Character, Integer> entry:fre.entrySet()) {
-		
-		if(entry.getValue()>1) {
-			System.out.println(entry.getKey()+" -> "+entry.getValue());
-		}
-		}
-			
-	}
-
+        for (Map.Entry<Character, Integer> entry : frequency.entrySet()) {
+            if (entry.getValue() > 1) {
+                System.out.println(entry.getKey() + " -> " + entry.getValue());
+                break;
+            }
+        }
+    }
 }
